@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -34,11 +33,10 @@ public class UserApiTest {
     @Test
     public void should_get_user_when_username_and_password_match() throws Exception {
         mockMvc.perform(get("/login?username=xiaozhang&password=147258"))
-                .andExpect(jsonPath("$",hasSize(1)))
-                .andExpect(jsonPath("$.id",is(1)))
-                .andExpect(jsonPath("$.username",is("xiaozhang")))
-                .andExpect(jsonPath("$.password",is("147258")))
-                .andExpect(jsonPath("$.email",is("xiaozhang@qq.com")))
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.username", is("xiaozhang")))
+                .andExpect(jsonPath("$.password", is("147258")))
+                .andExpect(jsonPath("$.email", is("xiaozhang@qq.com")))
                 .andExpect(status().isOk());
     }
 }
